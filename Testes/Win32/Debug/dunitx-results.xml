@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="F:\ProvaDelphiApp\Testes\Win32\Debug\ProvaDelphiAppTestes.exe" total="3" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2022-06-19" time="0.004">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="ProvaDelphiAppTestes.exe" executed="true" result="Success" success="True" time="0.004" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="Model" executed="true" result="Success" success="True" time="0.004" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TTarefa3Teste" executed="True" result="Success" success="True" time="0.003" >
+                <results>
+                  <test-case name="Test1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="Fixture" name="TTarefa2Teste" executed="True" result="Success" success="True" time="0.001" >
+                <results>
+                  <test-case name="Test1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="uspQueryTeste" executed="true" result="Success" success="True" time="0.001" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TuspQueryTeste" executed="True" result="Success" success="True" time="0.001" >
+                <results>
+                  <test-case name="Test1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>
