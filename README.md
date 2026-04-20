@@ -1,4 +1,4 @@
-# Prova Delphi App (Portifolio)
+# Projeto Delphi MVP (Portifolio)
 
 Pequena aplicacao Delphi (Delphi 12 Community) com exemplos de:
 
