@@ -118,11 +118,11 @@ begin
     sColunas := sColunas + Trim(sColuna);
   end;
 
-  SQL.Add('Select ' + Trim(sColunas));
-  SQL.Add('From ' + Trim(FspTabelas[NUMERO_ZERO]));
+  SQL.Add('SELECT ' + Trim(sColunas));
+  SQL.Add('FROM ' + Trim(FspTabelas[NUMERO_ZERO]));
 
   if Trim(psCondicoes) <> STRING_VAZIA then
-    SQL.Add('Where ' + Trim(psCondicoes));
+    SQL.Add('WHERE ' + Trim(psCondicoes));
 end;
 
 end.

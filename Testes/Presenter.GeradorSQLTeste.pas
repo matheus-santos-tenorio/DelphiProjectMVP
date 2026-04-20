@@ -1,8 +1,8 @@
-unit Presenter.GeradorSQLTeste;
+﻿unit Presenter.GeradorSQLTeste;
 
 interface
 uses
-  DUnitX.TestFramework, Presenter.GeradorSQL, Utils.Logger;
+  DUnitX.TestFramework, Presenter.GeradorSQL, uLogger;
 
 type
 
@@ -10,7 +10,6 @@ type
   TPresenterGeradorSQLTeste = class(TObject)
   private
     FPresenter: IPresenterGeradorSQL;
-    FLogger: ILogger;
   public
     [Setup]
     procedure Setup;
@@ -27,18 +26,16 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils, uConstantes, uExceptions;
 
 procedure TPresenterGeradorSQLTeste.Setup;
 begin
-  FLogger := TFileLogger.Create;
-  FPresenter := TPresenterGeradorSQL.Create(FLogger);
+  FPresenter := TPresenterGeradorSQL.Create;
 end;
 
 procedure TPresenterGeradorSQLTeste.TearDown;
 begin
   FPresenter := nil;
-  FLogger := nil;
 end;
 
 procedure TPresenterGeradorSQLTeste.TestGerarSQLSucesso;

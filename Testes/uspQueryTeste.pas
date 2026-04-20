@@ -31,7 +31,7 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils, uConstantes;
 
 procedure TuspQueryTeste.Setup;
 begin
@@ -47,9 +47,9 @@ procedure TuspQueryTeste.Test_GerarSQL_DeveGerar_SQLValido;
 begin
   FspQuery.GeraSQL('NOME' + #13#10 + 'IDADE' + #13#10 + 'CPF', 'PESSOA', 'IDADE > 18');
 
-  Assert.IsTrue(FspQuery.SQL.Text.Contains('Select NOME, IDADE, CPF'), 'SQL nao contem a clausula SELECT esperada.');
-  Assert.IsTrue(FspQuery.SQL.Text.Contains('From PESSOA'), 'SQL nao contem a clausula FROM esperada.');
-  Assert.IsTrue(FspQuery.SQL.Text.Contains('Where IDADE > 18'), 'SQL nao contem a clausula WHERE esperada.');
+  Assert.IsTrue(FspQuery.SQL.Text.Contains('SELECT NOME, IDADE, CPF'), 'SQL nao contem a clausula SELECT esperada.');
+  Assert.IsTrue(FspQuery.SQL.Text.Contains('FROM PESSOA'), 'SQL nao contem a clausula FROM esperada.');
+  Assert.IsTrue(FspQuery.SQL.Text.Contains('WHERE IDADE > 18'), 'SQL nao contem a clausula WHERE esperada.');
 end;
 
 procedure TuspQueryTeste.Test_GerarSQL_DeveFalhar_QuandoTabelaInvalida;
@@ -82,9 +82,9 @@ procedure TuspQueryTeste.Test_GerarSQL_DeveGerar_SQLQuandoCondicoesSaoVazias;
 begin
   FspQuery.GeraSQL('NOME' + #13#10 + 'IDADE', 'PESSOA', STRING_VAZIA);
 
-  Assert.IsTrue(FspQuery.SQL.Text.Contains('Select NOME, IDADE'), 'SQL nao contem a clausula SELECT esperada.');
-  Assert.IsTrue(FspQuery.SQL.Text.Contains('From PESSOA'), 'SQL nao contem a clausula FROM esperada.');
-  Assert.IsTrue(not FspQuery.SQL.Text.Contains('Where '), 'SQL deveria nao conter WHERE quando condicoes estao vazias.');
+  Assert.IsTrue(FspQuery.SQL.Text.Contains('SELECT NOME, IDADE'), 'SQL nao contem a clausula SELECT esperada.');
+  Assert.IsTrue(FspQuery.SQL.Text.Contains('FROM PESSOA'), 'SQL nao contem a clausula FROM esperada.');
+  Assert.IsTrue(not FspQuery.SQL.Text.Contains('WHERE '), 'SQL deveria nao conter WHERE quando condicoes estao vazias.');
 end;
 
 procedure TuspQueryTeste.Test_GerarSQL_DeveFalhar_QuandoColunasApenasWhitespace;

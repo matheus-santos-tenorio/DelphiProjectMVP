@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{70F08A89-15FF-4B2D-AEE9-C2742E745F5D}</ProjectGuid>
-        <ProjectVersion>18.3</ProjectVersion>
+        <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>ProvaDelphiAppTestes.dpr</MainSource>
         <Base>True</Base>
@@ -89,22 +89,17 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Model.CarregamentoParaleloTeste.pas"/>
         <DCCReference Include="..\Model\Model.ProjetosTotalDivisoes.pas"/>
         <DCCReference Include="..\Model\Model.CarregamentoParalelo.pas"/>
         <DCCReference Include="Model.ProjetosTotalDivisoesTeste.pas"/>
         <DCCReference Include="uspQueryTeste.pas"/>
         <DCCReference Include="..\uspQuery.pas"/>
-        <DCCReference Include="LoggerTeste.pas"/>
-        <DCCReference Include="..\Utils\Logger.pas">
-            <ModuleName>Utils.Logger</ModuleName>
-        </DCCReference>
+        <DCCReference Include="..\Utils\uLogger.pas"/>
+        <DCCReference Include="..\Utils\uExceptions.pas"/>
+        <DCCReference Include="..\Utils\uConstantes.pas"/>
         <DCCReference Include="Presenter.GeradorSQLTeste.pas"/>
         <DCCReference Include="..\Presenter\Presenter.GeradorSQL.pas"/>
         <DCCReference Include="..\Presenter\Presenter.Base.pas"/>
-        <DCCReference Include="..\Utils\Exceptions.pas">
-            <ModuleName>Utils.Exceptions</ModuleName>
-        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -138,6 +133,12 @@
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="Win32\Debug\ProvaDelphiAppTestes.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win32\Debug\ProvaDelphiAppTestes.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>ProvaDelphiAppTestes.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

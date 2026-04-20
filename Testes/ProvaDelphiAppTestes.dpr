@@ -11,18 +11,17 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
-  Model.CarregamentoParaleloTeste in 'Model.CarregamentoParaleloTeste.pas',
   Model.ProjetosTotalDivisoes in '..\Model\Model.ProjetosTotalDivisoes.pas',
   Model.CarregamentoParalelo in '..\Model\Model.CarregamentoParalelo.pas',
   Model.ProjetosTotalDivisoesTeste in 'Model.ProjetosTotalDivisoesTeste.pas',
   uspQueryTeste in 'uspQueryTeste.pas',
   uspQuery in '..\uspQuery.pas',
-  LoggerTeste in 'LoggerTeste.pas',
-  Utils.Logger in '..\Utils\Logger.pas',
+  uLogger in '..\Utils\uLogger.pas',
+  uExceptions in '..\Utils\uExceptions.pas',
+  uConstantes in '..\Utils\uConstantes.pas',
   Presenter.GeradorSQLTeste in 'Presenter.GeradorSQLTeste.pas',
   Presenter.GeradorSQL in '..\Presenter\Presenter.GeradorSQL.pas',
-  Presenter.Base in '..\Presenter\Presenter.Base.pas',
-  Utils.Exceptions in '..\Utils\Exceptions.pas';
+  Presenter.Base in '..\Presenter\Presenter.Base.pas';
 
 var
   runner : ITestRunner;

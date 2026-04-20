@@ -1,4 +1,4 @@
-unit Model.CarregamentoParaleloTeste;
+﻿unit Model.CarregamentoParaleloTeste;
 
 interface
 uses
@@ -31,7 +31,7 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils, uConstantes;
 
 procedure TCarregamentoParaleloTeste.Setup;
 begin
