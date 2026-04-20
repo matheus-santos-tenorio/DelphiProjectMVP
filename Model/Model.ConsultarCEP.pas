@@ -3,12 +3,19 @@ unit Model.ConsultarCEP;
 interface
 
 type
+  /// <summary>
+  /// Interface para consulta da API
+  /// </summary>
   IConsultarCEP = Interface
     ['{6AA313A2-AE57-4B3D-9FF6-F73EF1C94DDC}']
 
+    /// <summary>Retorna o texto Formato que foi obtido pelo JSON</summary>
     function FormatarTexto: string;
-  End;
+  end;
 
+  /// <summary>
+  /// Implementação para consulta da API
+  /// </summary>
   TConsultarCEP = class(TInterfacedObject, IConsultarCEP)
   private
     FCep: string;
@@ -26,6 +33,7 @@ type
     FSiafi: string;
 
   public
+    /// <summary>Retorna o texto Formato que foi obtido pelo JSON</summary>
     function FormatarTexto: string;
 
     [JSONName('cep')]

@@ -7,28 +7,46 @@ uses
   Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, uConstantes;
 
 type
+  /// <summary>
+  /// Interface para projetar o total das divisões
+  /// </summary>
   IProjetosTotalDivisoes = interface
     ['{AF1FF272-CF3B-4D65-B70E-43928624A895}']
 
+    /// <summary>Retorna o total obtido na grid</summary>
     function Totalizador: Double;
+    /// <summary>Retorna o valor da divisão realizado pela rotina</summary>
     function Divisor: Double;
+    /// <summary>Retorna o Data Source com os valores para ser vinculado a grid</summary>
     function GetDataSource: TDataSource;
-
   end;
 
+  /// <summary>
+  /// Implementação para projetar o total das divisões
+  /// </summary>
   TProjetosTotalDivisoes = class(TInterfacedObject, IProjetosTotalDivisoes)
-    private
-      FClientDataSet: TClientDataSet;
-      FDataSource: TDataSource;
+  private
+    FClientDataSet: TClientDataSet;
+    FDataSource: TDataSource;
 
-    public
-      constructor Create;
-      destructor Destroy; Override;
+    /// <summary>Criação do conjunto de dados</summary>
+    procedure CriarConjuntoDados;
+    /// <summary>Alimentação do conjunto de dados</summary>
+    procedure AlimentarConjuntoDados;
 
-      class function Criar: IProjetosTotalDivisoes;
-      function Totalizador: Double;
-      function Divisor: Double;
-      function GetDataSource: TDataSource;
+  public
+    /// <summary>Criação da instância</summary>
+    constructor Create;
+    /// <summary>Destrói a instância e limpa recursos</summary>
+    destructor Destroy; Override;
+
+    class function Criar: IProjetosTotalDivisoes;
+    /// <summary>Retorna o total obtido na grid</summary>
+    function Totalizador: Double;
+    /// <summary>Retorna o valor da divisão realizado pela rotina</summary>
+    function Divisor: Double;
+    /// <summary>Retorna o Data Source com os valores para ser vinculado a grid</summary>
+    function GetDataSource: TDataSource;
   end;
 
 implementation
@@ -36,19 +54,27 @@ implementation
 { TProjetosTotalDivisoes }
 
 constructor TProjetosTotalDivisoes.Create;
-var
-  Codigo, I: Integer;
 begin
-  Randomize;
+  CriarConjuntoDados;
+  AlimentarConjuntoDados;
+end;
+
+procedure TProjetosTotalDivisoes.CriarConjuntoDados;
+begin
   FClientDataSet := TClientDataSet.Create(nil);
-  FDataSource    := TDataSource.Create(nil);
 
   FClientDataSet.FieldDefs.Add('IdProjeto', ftInteger);
   FClientDataSet.FieldDefs.Add('NomeProjeto', ftString, 12);
   FClientDataSet.FieldDefs.Add('Valor', ftFloat);
 
   FClientDataSet.CreateDataSet;
+end;
 
+procedure TProjetosTotalDivisoes.AlimentarConjuntoDados;
+var
+  Codigo, I: Integer;
+begin
+  Randomize;
   for I := 1 to 10 do
   begin
     repeat
@@ -63,6 +89,7 @@ begin
     FClientDataSet.Post;
   end;
 
+  FDataSource := TDataSource.Create(nil);
   FDataSource.DataSet := FClientDataSet;
 end;
 

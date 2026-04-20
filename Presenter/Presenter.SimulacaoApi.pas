@@ -30,8 +30,19 @@ function TPresenterSimulacaoApi.BuscarEndereco(psCEP: string): string;
 var
   ConsultarCEP: IConsultarCEP;
 begin
-  ConsultarCEP := TJson.JsonToObject<TConsultarCEP>(TServiceConsultarCEP.Buscar(psCEP));
-  result := ConsultarCEP.FormatarTexto;
+  FLogger.LogInfo('Realizando consumo da API');
+  try
+    ConsultarCEP := TJson.JsonToObject<TConsultarCEP>(TServiceConsultarCEP.Buscar(psCEP));
+    result := ConsultarCEP.FormatarTexto;
+
+    FLogger.LogInfo('Consumo realizado com sucesso');
+  except
+    on E: Exception do
+    begin
+      LogarErro('Erro ao consumir a API', E);
+      raise EProjetosTotalDivisoesException.Create('Erro ao consumir a API', E);
+    end;
+  end;
 end;
 
 end.
