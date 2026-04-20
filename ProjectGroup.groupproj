@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C73FFFFE-E1F6-48E6-927F-CF9A2D536E7E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiProjectMVP.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="spComponentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="spComponentesDT.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiProjectMVP">
+        <MSBuild Projects="DelphiProjectMVP.dproj"/>
+    </Target>
+    <Target Name="DelphiProjectMVP:Clean">
+        <MSBuild Projects="DelphiProjectMVP.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiProjectMVP:Make">
+        <MSBuild Projects="DelphiProjectMVP.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="spComponentes">
+        <MSBuild Projects="spComponentes.dproj"/>
+    </Target>
+    <Target Name="spComponentes:Clean">
+        <MSBuild Projects="spComponentes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="spComponentes:Make">
+        <MSBuild Projects="spComponentes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="spComponentesDT">
+        <MSBuild Projects="spComponentesDT.dproj"/>
+    </Target>
+    <Target Name="spComponentesDT:Clean">
+        <MSBuild Projects="spComponentesDT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="spComponentesDT:Make">
+        <MSBuild Projects="spComponentesDT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiProjectMVP;spComponentes;spComponentesDT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiProjectMVP:Clean;spComponentes:Clean;spComponentesDT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiProjectMVP:Make;spComponentes:Make;spComponentesDT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
